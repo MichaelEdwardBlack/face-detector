@@ -30,6 +30,7 @@ function detectURL(url) {
       for (var i = 0; i < json.faces.length; i++) {
         let attrs = json.faces[i].attributes;
         let emotion = calcStrongestEmotion(attrs.emotion);
+        let emoji = getEmojiFromEmotion(emotion);
         let beauty = (attrs.gender.value === "Male" ? attrs.beauty.male_score : attrs.beauty.female_score);
 
         results += `
@@ -49,7 +50,7 @@ function detectURL(url) {
             </h3></div>
             <div class="col"><h3>${attrs.age.value}</h3></div>
             <div class="col"><h3>${attrs.ethnicity.value}</h3></div>
-            <div class="col"><h3>${emotion}</h3></div>
+            <div class="col"><h3>${emotion} ${emoji}</h3></div>
             <div class="col"><h3>${beauty}</h3></div>
           </div>
           <br/>
@@ -75,4 +76,25 @@ function calcStrongestEmotion(emotions) {
     }
   }
   return strongestEmotion;
+}
+
+function getEmojiFromEmotion(emotion) {
+  switch (emotion) {
+    case 'anger':
+      return "😡"
+    case 'disgust':
+      return "🤢"
+    case 'fear':
+      return "😱"
+    case 'happiness':
+      return "😊"
+    case 'neutral':
+      return "😐"
+    case 'sadness':
+      return "😢"
+    case 'surprise':
+      return "😲"
+    default:
+      return '?';
+  }
 }
