@@ -1,4 +1,6 @@
 # face-detector
 Creative Project #2 for CS 260
 
-Simply paste an image url in the input box and click to see the results on the APIs best guess at gender, age, ethnicity (only determines black, white, and asian at the moment), beauty, and mood!
+This project uses the Face++ API to detect facial moods and evaluate gender, age, and ethnicity (only determines Black, White, Indian, and Asian at the moment) from an image.
+
+You can easily use it and have 5 faces analyzed in one image by entering a url to an image or uploading an image from your device. 

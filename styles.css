@@ -19,3 +19,11 @@ body {
 .error {
   color: red;
 }
+
+.hide {
+  display: none;
+}
+
+#spinner {
+  padding: 20px;
+}

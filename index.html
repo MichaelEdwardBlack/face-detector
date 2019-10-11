@@ -27,19 +27,39 @@
     </div>
 
     <div class="section container-fluid bg-secondary">
-      <h2 class="text-white">Paste Image URL Here</h2>
-      <form id="form_url">
-        <input id="image_url" class="form-control form-control-lg" type="text" placeholder="https://image.jpeg" required><br/>
-        <button id="submit_url" type="submit" class="btn btn-outline-light btn-lg">
-          <h3>Get Results</h3>
-        </button>
-      </form>
+      <div class="row">
+        <div class="col">
+          <h3 class="text-white">Paste Image URL Here</h3>
+          <form id="form_url">
+            <input id="image_url" class="form-control form-control-lg" type="text" placeholder="https://image.jpeg" required><br/>
+            <button id="submit_url" type="submit" class="btn btn-outline-light btn-lg">
+              <h4>Get Results</h4>
+            </button>
+          </form>
+        </div>
+        <div class="text-white">OR</div>
+        <div class="col">
+          <form id="form_file">
+            <h3 class="text-white">Upload JPEG or PNG Here</h3>
+            <div class="custom-file">
+              <input id="image_file" class="custom-file-input" type="file" accept="image/jpeg, image/png" required><br/>
+              <label id="image_label" class="custom-file-label" for="image_file">Choose File</label><br/>
+            </div>
+            <button id="submit_file" type="submit" class="btn btn-outline-light btn-lg">
+              <h4>Get Results</h4>
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
 
     <div id="url_results" class="section container-fluid bg-light">
       Results Will Show Up Here
     </div>
 
+    <div class="container-fluid bg-light">
+      <i id="spinner" class="fa fa-spinner fa-spin fa-3x hide"></i>
+    </div>
 
     <footer class="footer bg-dark">
       <div class="container-fluid">
