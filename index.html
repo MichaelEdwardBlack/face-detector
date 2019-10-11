@@ -9,28 +9,35 @@
   </head>
   <body>
     <nav class="navbar navbar-dark bg-dark">
-      <img class="navbar-brand white-logo" src="https://cdn.faceplusplus.com/mc-official/v2.1/img/logo_en.9a130ef.svg" height="128" width="128" alt="api-logo">
+      <img id="brand" class="navbar-brand white-logo" src="https://cdn.faceplusplus.com/mc-official/v2.1/img/logo_en.9a130ef.svg" alt="api-logo">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       </ul>
     </nav>
 
-    <div class="header container-fluid bg-light">
+    <div class="section container-fluid bg-light">
       <div class="text-primary">
-        <h1 class="display-4">Face Detector</h1>
-        <br/>
-        <h3>Paste Image URL</h3>
+        <h1 class="display-1">Face Detector</h1>
         <hr/>
-        <form id="form_url">
-          <input id="image_url" class="form-control form-control-lg" type="text" placeholder="https://image.jpeg" required><br/>
-          <button id="submit_url" type="submit" class="btn btn-outline-primary btn-lg">
-            Get Results
-          </button>
-        </form>
+      </div>
+      <div class="text-secondary">
+        <h3>
+          Face++ is a free API that detects various attributes from an image. Enter the url to an image in the field below to see predictions of age, gender, ethnicity, and other attributes.
+        </h3>
       </div>
     </div>
 
-    <div id="img-results" class="container-fluid bg-light">
-      <div id="gender"></div>
+    <div class="section container-fluid bg-secondary">
+      <h2 class="text-white">Paste Image URL Here</h2>
+      <form id="form_url">
+        <input id="image_url" class="form-control form-control-lg" type="text" placeholder="https://image.jpeg" required><br/>
+        <button id="submit_url" type="submit" class="btn btn-outline-light btn-lg">
+          <h3>Get Results</h3>
+        </button>
+      </form>
+    </div>
+
+    <div id="url_results" class="section container-fluid bg-light">
+      Results Will Show Up Here
     </div>
 
 
@@ -38,7 +45,7 @@
       <div class="container-fluid">
         <div class="text-muted">
           The API used is from
-          <a href="https://www.faceplusplus.com/">Face Plus Plus</a>
+          <a href="https://www.faceplusplus.com/">Face++</a>
           . Website created by Michael Black. See his work on Github
           <a href="https://github.com/michaelblack117/face-detector">
             <i class="fa fa-github-alt" aria-hidden="true"></i>
@@ -47,36 +54,7 @@
       </div>
     </footer>
 
-    <script type="text/javascript">
-
-      document.getElementById("submit_url").addEventListener("click", function(event) {
-        event.preventDefault();
-        const url = document.getElementById("image_url").value;
-        detectURL(url);
-      });
-
-
-      function detectURL(url) {
-        const base_url = "https://api-us.faceplusplus.com/facepp/v3/detect";
-        const data = new URLSearchParams();
-        data.append("api_key", "Tskw9j3_9UMr02y_UH8eb8g-sR45EMPp");
-        data.append("api_secret", "scGLqSv40_Ir-d4_-tVdUsOsA26wYlh-");
-        data.append("image_url", url);
-        data.append("return_attributes", "gender,age,emotion,ethnicity,beauty")
-        fetch(base_url, {
-        	"method": "POST",
-        	"headers": {
-        		"content-type": "application/x-www-form-urlencoded; charset=utf-8",
-        	},
-        	"body": data
-        })
-        .then(response => response.json())
-        .then(jsondata => console.log(jsondata))
-        .catch(err => {
-        	console.log(err);
-        });
-      }
-    </script>
+    <script type="text/javascript" src="./script.js"></script>
   </body>
 </html>
 
@@ -84,24 +62,3 @@
 <!-- "api_secret": "scGLqSv40_Ir-d4_-tVdUsOsA26wYlh-" -->
 
 <!-- Test Johnny Depp image https://www.aceshowbiz.com/images/photo/johnny_depp.jpg -->
-
-<!--
-{
-  "time_used": 146,
-  "faces": [
-    {
-      "face_rectangle": {
-        "width": 115,
-        "top": 115,
-        "left": 93,
-        "height": 115
-      },
-      "face_token": "770741a4361dad9e52973b6e6b70f021"
-    }
-  ],
-  "image_id": "tklB85VWRk0ez4/WHbxhIw==",
-  "request_id":
-  "1570775668,40bcf44d-c313-41a4-b287-a47f5e0584bd",
-  "face_num": 1
-}
--->

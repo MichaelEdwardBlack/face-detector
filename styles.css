@@ -1,7 +1,21 @@
 body {
   text-align: center;
+  font-size: 24px;
 }
 
-.header {
+#brand {
+  height: 5em;
+  width: 10em;
+}
+
+.section {
   padding: 100px;
+}
+
+.footer {
+  padding: 50px;
+}
+
+.error {
+  color: red;
 }
